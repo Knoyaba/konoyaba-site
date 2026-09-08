@@ -2,6 +2,9 @@
 
 『このスキル、やばスギル ～ガチャ沼に堕ちたら俺の負け～』（略称「このやば」）の公式サイトです。HTML、CSS、JavaScriptだけで動作する静的サイトで、GitHubとCloudflare Pagesによる無料公開を想定しています。
 
+- 公開サイト: https://konoyaba-site.pages.dev/
+- GitHub: https://github.com/Knoyaba/konoyaba-site
+
 ## フォルダ構成
 
 ```text
@@ -70,13 +73,13 @@ Cloudflare Dashboardで Workers & Pages → Create → Pages → Connect to Git 
 
 Web公開用に最適化した画像は `images/` に置きます。faviconやOGP画像などサイト共通の素材は `assets/` に置きます。巨大な元画像、動画、編集途中データはリポジトリ外で管理してください。画像はWebPまたはAVIFを優先し、表示サイズに合わせて圧縮します。
 
-OGP画像を追加する場合は `assets/og-image.jpg`（推奨1200×630px）として保存し、各HTMLの `<head>` に `og:image` と `twitter:image` を追加します。公開URL決定後、`https://example.com/` とcanonical URLを実URLへ置換してください。
+OGP画像を追加する場合は `assets/og-image.jpg`（推奨1200×630px）として保存し、各HTMLの `<head>` に `og:image` と `twitter:image` を追加します。独自ドメインへ変更した場合は、canonical URLと `og:url` も新しいURLへ置換してください。
 
 ## 今後の更新時の注意点
 
 - 作品情報は「設定正本 → 正史本文 → 正式アーク構成」の優先順で確認する。
 - 正式採用前の下書きや未確定情報を公開しない。
 - 小説掲載先が決まったら `index.html` の「掲載先 準備中」を正式URLのリンクへ置換する。
-- 公開URL決定後、各ページのcanonical、OGP URL、SNS画像を更新する。
+- 独自ドメインへ変更した場合、各ページのcanonical、OGP URL、SNS画像を更新する。
 - 外部ライブラリを追加する前に、HTML/CSS/JavaScriptだけで実現できないか確認する。
 - `sources/` や作品本体の正本ファイルは、このサイトリポジトリへコピーしない。
