@@ -1,0 +1,18 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local-only and generated files
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+tmp/
+*.log
+
+# Large source media should stay outside this repository
+source-media/
+raw-assets/
