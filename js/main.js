@@ -1,12 +1,13 @@
 const characters = [
-  {name:'黒瀬夜斗', reading:'KUROSE YATO', type:'main', badge:'王', title:'《淫獄》の王', description:'現代日本から転移した成人男性。ガチャ好きだが、沼へ堕ちることを警戒する。住民を所有物として扱わず、本人の選択を尊重しようとする。'},
-  {name:'ファステ・フェルン', reading:'FASTE FERN', type:'local', badge:'LOCAL', title:'逃げ出した家政婦', description:'以前の雇用先から逃げ出した家政婦。《淫獄》で生活、食事、紅茶を担う、一人目の現地加入住民。'},
-  {name:'リゼ・アルノール', reading:'LISE ARNOLD', type:'summoned', badge:'R', title:'最後まで残った傭兵', description:'強く、口が鋭い元傭兵。戦闘、護衛、危険察知に優れ、外出組の安全判断を担う。'},
-  {name:'レイナ・クロフォード', reading:'REINA CRAWFORD', type:'summoned', badge:'SR', title:'籠の中の令嬢', description:'将来を周囲に決められてきた令嬢。学習が早く、品質や用途を見極める目を持つ。'},
-  {name:'冬月千代', reading:'FUYUTSUKI CHIYO', type:'summoned', badge:'SSR', title:'落城の女城主', description:'落城を経験した女城主。統治、備蓄、防衛、継続運用に優れ、《淫獄》内の記録と運営を担う。'},
-  {name:'ヴィオラ・ベル', reading:'VIOLA BELL', type:'summoned', badge:'N', title:'場末の賭け師', description:'軽く見えて、確率、嘘、危険と見返りを読む賭け師。外界での交渉と情報収集を担う。'},
-  {name:'セリナ・ウェルズ', reading:'SERINA WELLS', type:'summoned', badge:'SR', title:'気ままな放浪者', description:'旅と生存の経験を持つ放浪者。住民登録を残したまま、自らの意思で《淫獄》の外を旅している。'},
-  {name:'ナーヴァ', reading:'NAVA', type:'summoned', badge:'UR', title:'戦場を焼き尽くした竜', description:'軍勢を焼き尽くせる古竜。規格外の力を持つが、現在は夜斗たちと同居し、狩猟の運用作りに参加している。'}
+  {name:'黒瀬夜斗', reading:'KUROSE YATO', type:'main', badge:'王', image:'黒瀬夜斗.png', title:'《淫獄》の王', description:'現代日本から転移した成人男性。ガチャ好きだが、沼へ堕ちることを警戒する。住民を所有物として扱わず、本人の選択を尊重しようとする。'},
+  {name:'ファステ・フェルン', reading:'FASTE FERN', type:'local', badge:'LOCAL', image:'ファステ・フェルン.png', title:'逃げ出した家政婦', description:'以前の雇用先から逃げ出した家政婦。《淫獄》で生活、食事、紅茶を担う、一人目の現地加入住民。'},
+  {name:'リゼ・アルノール', reading:'LISE ARNOLD', type:'summoned', badge:'R', image:'リゼ・アルノール.png', title:'最後まで残った傭兵', description:'強く、口が鋭い元傭兵。戦闘、護衛、危険察知に優れ、外出組の安全判断を担う。'},
+  {name:'レイナ・クロフォード', reading:'REINA CRAWFORD', type:'summoned', badge:'SR', image:'レイナ・クロフォード.png', title:'籠の中の令嬢', description:'将来を周囲に決められてきた令嬢。学習が早く、品質や用途を見極める目を持つ。'},
+  {name:'冬月千代', reading:'FUYUTSUKI CHIYO', type:'summoned', badge:'SSR', image:'冬月千代.png', title:'落城の女城主', description:'落城を経験した女城主。統治、備蓄、防衛、継続運用に優れ、《淫獄》内の記録と運営を担う。'},
+  {name:'ヴィオラ・ベル', reading:'VIOLA BELL', type:'summoned', badge:'N', image:'ヴィオラ・ベル.png', title:'場末の賭け師', description:'軽く見えて、確率、嘘、危険と見返りを読む賭け師。外界での交渉と情報収集を担う。'},
+  {name:'セリナ・ウェルズ', reading:'SERINA WELLS', type:'summoned', badge:'SR', image:'セリナ・ウェルズ.png', title:'気ままな放浪者', description:'旅と生存の経験を持つ放浪者。住民登録を残したまま、自らの意思で《淫獄》の外を旅している。'},
+  {name:'ナーヴァ', reading:'NAVA', type:'summoned', badge:'UR', title:'戦場を焼き尽くした竜', description:'軍勢を焼き尽くせる古竜。規格外の力を持つが、現在は夜斗たちと同居し、狩猟の運用作りに参加している。'},
+  {name:'縁', reading:'ENISHI', type:'other', badge:'?', image:'縁.png', title:'正体不明の小型生物', description:'《淫獄》で保護され、共同生活へ馴染みつつある小さな生き物。誰の物にもならず、自分で安心できる距離を選ぶ。'}
 ];
 
 const glossary = [
@@ -21,7 +22,7 @@ const glossary = [
 ];
 
 const escapeHTML = value => value.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
-const cardHTML = c => `<article class="character-card" data-type="${c.type}"><div class="character-symbol" aria-hidden="true"><span>${escapeHTML(c.badge)}</span></div><div><p class="character-reading">${escapeHTML(c.reading)}</p><h2>${escapeHTML(c.name)}</h2><p class="character-title">${escapeHTML(c.title)}</p><p>${escapeHTML(c.description)}</p></div></article>`;
+const cardHTML = c => `<article class="character-card" data-type="${c.type}">${c.image ? `<div class="character-portrait"><img src="${location.pathname.includes('/characters/') ? '../' : ''}images/characters/${encodeURIComponent(c.image)}" alt="${escapeHTML(c.name)}のシルエット" width="768" height="1152" loading="lazy"></div>` : `<div class="character-symbol" aria-hidden="true"><span>${escapeHTML(c.badge)}</span></div>`}<div><p class="character-reading">${escapeHTML(c.reading)}</p><h2>${escapeHTML(c.name)}</h2><p class="character-title">${escapeHTML(c.title)}</p><p>${escapeHTML(c.description)}</p></div></article>`;
 
 const menuButton = document.querySelector('[data-menu-button]');
 const nav = document.querySelector('[data-nav]');
