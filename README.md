@@ -1,85 +1,130 @@
-# konoyaba-site
+# このやば 公式サイト
 
-『このスキル、やばスギル ～ガチャ沼に堕ちたら俺の負け～』（略称「このやば」）の公式サイトです。HTML、CSS、JavaScriptだけで動作する静的サイトで、GitHubとCloudflare Pagesによる無料公開を想定しています。
+『このスキル、やばスギル ～ガチャ沼に堕ちたら俺の負け～』の公式サイト。作者：明日乃風。
+HTML・CSS・JavaScriptで動く静的サイトです。外部ライブラリやビルド処理は必要ありません。
 
-- 公開サイト: https://konoyaba-site.pages.dev/
-- GitHub: https://github.com/Knoyaba/konoyaba-site
+- 公開先：https://konoyaba-site.pages.dev/
+- キャラクター紹介：https://konoyaba-site.pages.dev/characters/
+- GitHub：https://github.com/Knoyaba/konoyaba-site
+- 公開元：`main` → Cloudflare Pagesの自動デプロイ
 
-## フォルダ構成
+## 現在のキャラクター紹介
+
+2026年11月15日、作者が紹介の構成・文章・ビジュアル16点を採用し、公開を指示しました。
+夜斗版9名・朝斗版8名を切り替えて紹介します。ファステのビジュアルは共通です。
+丸枠は人物ごとに表示範囲を設定し、髪・帽子・角・耳を含めた顔の収まりを調整しています。
+
+朝斗版は公開済み第1〜12話を照合しています。
+確認先：https://ncode.syosetu.com/n6073ms/
+
+この採用は公式紹介用です。サイト上の外見を小説の設定正本や本文へ自動反映する処理はありません。
+新しい描写や版別の関係性は、作品の正式資料または作者の明示で確認してから更新します。
+
+## フォルダー構成
 
 ```text
 konoyaba-site/
-├─ index.html              トップ、作品紹介、最新話導線、お知らせ
-├─ characters/index.html   キャラクター紹介
-├─ world/index.html        世界観紹介
-├─ glossary/index.html     用語集
-├─ css/style.css           共通デザイン
-├─ js/main.js              メニュー、キャラクター、用語データと表示処理
-├─ assets/                 favicon、将来のOGP画像など
-├─ images/                 公開用画像
-├─ .gitignore
+├─ index.html                  トップ・作品紹介・小説導線・お知らせ
+├─ characters/index.html       版を切り替えられる人物紹介
+├─ world/index.html            世界観
+├─ glossary/index.html         用語集
+├─ css/style.css               共通デザイン
+├─ css/characters.css          人物紹介専用デザイン
+├─ js/main.js                  共通操作・夜斗版人物・用語データ
+├─ js/characters-data.js       版別紹介・掲載URL・丸枠の表示範囲
+├─ js/characters.js            版・人物・分類・URL・履歴の切り替え
+├─ images/characters/20261115/  採用済みWebP16点
+├─ images/characters/          従来のトップ紹介用シルエット
+├─ assets/                     faviconなど
 └─ README.md
 ```
 
-## ローカルで確認する方法
+## ローカルで確認する
 
-簡易確認は `index.html` をブラウザで開きます。Pythonがインストールされている環境では、ページ遷移も含めて確認するため、フォルダ内で次を実行して `http://localhost:8000` を開きます。
+`index.html`をブラウザーで開けます。人物紹介は`characters/index.html`です。
+HTTPで確認する場合は、このフォルダーを静的サーバーの公開先にします。
+Pythonが利用可能な環境では以下で確認できます。
 
 ```powershell
 python -m http.server 8000
 ```
 
-終了はターミナルで `Ctrl+C` です。
+ブラウザーで`http://localhost:8000/`を開き、終了時はターミナルでCtrl+Cを押します。
 
-## GitHubへの更新方法
+## GitHubへ更新する
 
-GitHubで `konoyaba-site` リポジトリを作成した後、表示されたURLを使って一度だけ接続します。
-
-```powershell
-git remote add origin https://github.com/ユーザー名/konoyaba-site.git
-git push -u origin main
-```
-
-以後の更新は次の流れです。
+変更と差分を確認し、公開対象だけをコミットしてpushします。
 
 ```powershell
-git add .
-git commit -m "更新内容を短く記載"
-git push
+git status
+git diff
+git add README.md characters/index.html css/characters.css js/characters.js js/characters-data.js images/characters/
+git commit -m "キャラクター紹介を更新"
+git push origin main
 ```
 
-アカウント情報、アクセストークン、秘密鍵、`.env` はコミットしないでください。
+トップ・世界観・用語集などを変更した場合は、そのファイルも対象へ加えます。
+`.env`、認証情報、原画、未採用候補、ログ、生成用ワークフローは公開対象にしません。
 
-## Cloudflare Pagesへの反映方法
+## Cloudflare Pagesへの反映
 
-Cloudflare Dashboardで Workers & Pages → Create → Pages → Connect to Git を選び、GitHubの `konoyaba-site` を接続します。
+GitHubの`Knoyaba/konoyaba-site`の`main`と連携しています。
 
-- Production branch: `main`
-- Framework preset: `None`
-- Build command: 空欄
-- Build output directory: `/`（リポジトリのルート）
+- Framework preset：None
+- Build command：空欄
+- Build output directory：`/`
 
-初回公開後は `main` へpushすると自動的に再デプロイされます。独自ドメインはCloudflare Pagesの Custom domains から後で設定できます。
+`main`へのpush後に自動デプロイされます。更新後は公開URLで、表示・画像・リンク・版切り替えを確認します。
+同じ名前のCSSやJavaScriptを更新した場合は、HTMLの`?v=`も更新し、古い表示が残らないようにします。
 
-## キャラクターを追加する方法
+## 人物を追加・更新する
 
-`js/main.js` の `characters` 配列へ、既存項目と同じ形式で追加します。`type` は `summoned`（召喚住民）、`local`（現地加入）、`main`（主人公）のいずれかです。追加内容は必ず設定正本または正式採用済み本文と照合してください。
+### 夜斗版
 
-## 用語を追加する方法
+`js/main.js`の`characters`に人物の名前・紹介を登録し、`js/characters.js`の`visuals`に
+対応する名前・ID・色を追加します。紹介用画像は現在の`images/characters/20261115/人物ID.webp`に置きます。
+既存の`image`はトップ用シルエットです。紹介ページのカラー立ち絵とは表示方法が異なります。
 
-`js/main.js` の `glossary` 配列へ `term`、`reading`、`text` を追加します。未確定設定や作者だけが知る情報を、作中の公開情報として断定しないでください。
+### 朝斗版・今後の別版
 
-## 画像を追加する場所
+`js/characters-data.js`の該当版の`profiles`を更新します。
+共通人物は`baseId`で参照し、`description`など版によって異なる項目だけを上書きします。
+新規人物は名前・ID・分類・紹介・画像パスを登録します。
+別版への登場、召喚後の状態、関係性を推測で追加しません。
 
-Web公開用に最適化した画像は `images/` に置きます。faviconやOGP画像などサイト共通の素材は `assets/` に置きます。巨大な元画像、動画、編集途中データはリポジトリ外で管理してください。画像はWebPまたはAVIFを優先し、表示サイズに合わせて圧縮します。
+`readUrl`は、その版の小説掲載先です。
+`/characters/?route=asato#asato`のように、版と人物を指定したURLでも開けます。
 
-OGP画像を追加する場合は `assets/og-image.jpg`（推奨1200×630px）として保存し、各HTMLの `<head>` に `og:image` と `twitter:image` を追加します。独自ドメインへ変更した場合は、canonical URLと `og:url` も新しいURLへ置換してください。
+### 丸枠の顔の位置
 
-## 今後の更新時の注意点
+`js/characters-data.js`の`KONOYABA_PORTRAIT_CROPS`を調整します。
+`x`・`y`は832×1216の元画像内の表示開始位置、`size`は表示する正方形の一辺です。
+小さい`size`ほど顔が大きく見えます。各版で同じ人物の設定を共用します。
+画像本体は切り抜かず、CSSで位置・大きさを調整しています。
+人物画像を差し替えた場合は、PCとスマートフォンの両方で髪・帽子・角・耳と顔が収まるか確認してください。
 
-- 作品情報は「設定正本 → 正史本文 → 正式アーク構成」の優先順で確認する。
-- 正式採用前の下書きや未確定情報を公開しない。
-- 小説掲載先は `index.html` の「小説家になろうで読む」リンクで管理する。掲載URLが変わった場合はリンク先を更新する。
-- 独自ドメインへ変更した場合、各ページのcanonical、OGP URL、SNS画像を更新する。
-- 外部ライブラリを追加する前に、HTML/CSS/JavaScriptだけで実現できないか確認する。
-- `sources/` や作品本体の正本ファイルは、このサイトリポジトリへコピーしない。
+## 用語・お知らせを追加する
+
+用語は`js/main.js`の`glossary`へ`term`・`reading`・`text`を追加します。
+お知らせは`index.html`のニュース欄を更新します。
+未確定の設定や未公開の重大な展開を、一般向けの紹介として断定しないでください。
+
+## 画像と元データの保存
+
+公開用画像は`images/`、共通アイコンや将来のOGP画像は`assets/`へ置きます。
+WebPなどに最適化し、幅・高さ・代替テキストを付けます。
+巨大な原画、動画、制作途中の候補、生成手順、照合用本文は作品側の制作資料で管理します。
+サイトリポジトリへコピーしません。
+
+人物紹介にはcanonical・OGPの基本情報を設定しています。
+共有用の横長画像を追加する場合は、公開後の絶対URLで`og:image`などを設定してください。
+ドメイン変更時はcanonicalとOGPのURLも更新します。
+
+## 更新時の注意
+
+- このフォルダーを唯一の公式サイト原本として使い、別の作業コピーと同期しない。
+- 公開用要約と小説の正式原本を区別する。
+- 画像採用は、採用された画像を参照する。以前の候補へ戻さない。
+- 版別の紹介・画像・人物URL・小説リンクが対応しているか確認する。
+- スマートフォン、キーボード操作、画像の読み込み、文字の折り返しを確認する。
+- 不要な外部依存を増やさない。パスワード・秘密鍵・トークンを保存しない。
