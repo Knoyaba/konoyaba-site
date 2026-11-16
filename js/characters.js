@@ -8,7 +8,7 @@
     '冬月千代':{id:'chiyo',color:'#d09b9f'},'ヴィオラ・ベル':{id:'viola',color:'#d8b77b'},
     'セリナ・ウェルズ':{id:'serina',color:'#9dbfb6'},'ナーヴァ':{id:'nava',color:'#d3a17e'},'縁':{id:'enishi',color:'#ccc6a5'}
   };
-  const common=characters.filter(p=>visuals[p.name]).map(p=>({...p,...visuals[p.name],art:'../images/characters/20261115/'+visuals[p.name].id+'.webp'}));
+  const common=characters.filter(p=>visuals[p.name]).map(p=>({...p,...visuals[p.name],art:'../images/characters/20261117-unified/'+visuals[p.name].id+'.webp'}));
   const profilesFor=route=>routes[route].profiles?routes[route].profiles.map(p=>{
     if(!p.baseId)return {...p};
     const base=common.find(c=>c.id===p.baseId);
