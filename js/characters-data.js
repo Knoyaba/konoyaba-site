@@ -12,7 +12,7 @@ window.KONOYABA_CHARACTER_ROUTES = {
     introduction: 'ガチャを回し、領域を育て、王国を広げる。白瀬朝斗と、それぞれの意思を持つ人々の物語。',
     note: '朝斗版はリミットブレイク版です。共通する人物の来歴を土台に、成長や関係性は朝斗版の物語に沿って紹介します。紹介内容は公開済み第1〜12話を基準にしています。',
     profiles: [
-      {id:'asato',name:'白瀬朝斗',reading:'ASATO',type:'main',badge:'王',color:'#d6af62',art:'../images/characters/20261115/asato-personality-20261116.webp',title:'《淫獄》の成長にのめり込む大学生',description:'手に入れたキャラクターは限界まで育てたい、と考える成人大学生。領域を広げ、新たな住民を呼ぶことに強く惹かれ、召喚への衝動にも合理的な理由を見つけていく。誰かを助けたい気持ちは本物だが、自分の望みと相手の意思が重なるとは限らない。'},
+      {id:'asato',name:'白瀬朝斗',reading:'ASATO',type:'main',badge:'王',color:'#d6af62',art:'../images/characters/20261115/asato-sidepart-20261116.webp',title:'《淫獄》の成長にのめり込む大学生',description:'手に入れたキャラクターは限界まで育てたい、と考える成人大学生。領域を広げ、新たな住民を呼ぶことに強く惹かれ、召喚への衝動にも合理的な理由を見つけていく。誰かを助けたい気持ちは本物だが、自分の望みと相手の意思が重なるとは限らない。'},
       {baseId:'faste',description:'以前の雇用先から逃げ出した、現地人の家政婦。朝斗が《淫獄》へ迎えた最初の住民。家事や食事、茶を淹れる経験を持ち、暮らしの小さな不安や、新しく呼ばれる相手への説明にも目を向ける。'},
       {id:'aquaria',name:'アクアリア・メルシェ',reading:'AQUARIA',type:'summoned',badge:'SSR',color:'#a6cce0',art:'../images/characters/20261115/aquaria.webp',title:'枯れた聖泉の守り人',description:'水を生み、操り、浄化する力を持つ水精族。傷の手当や護身にも長ける。突然の召喚に警戒しながらも、目の前の怪我や飲み水の問題に向き合う。ひび割れた青い雫形の石を大切にしている。'},
       {id:'mira',name:'ミラ・コレット',reading:'MIRA',type:'summoned',badge:'R',color:'#d1b08d',art:'../images/characters/20261115/mira.webp',title:'飢えた宿の料理番',description:'宿の厨房で働いていた、経験豊かな料理人。食材の状態や水と火の条件を見極め、限られた道具から食事を作る。食べられるものを無駄にせず、無理をする相手には率直に声をかける現実派。'},
