@@ -7,7 +7,7 @@ const characters = [
   {name:'ヴィオラ・ベル', reading:'VIOLA BELL', type:'summoned', badge:'N', image:'20261117-personality/viola.webp', title:'場末の賭け師', description:'軽く見えて、確率、嘘、危険と見返りを読む賭け師。外界での交渉と情報収集を担う。'},
   {name:'セリナ・ウェルズ', reading:'SERINA WELLS', type:'summoned', badge:'SR', image:'20261117-personality/serina.webp', title:'気ままな放浪者', description:'旅と生存の経験を持つ放浪者。住民登録を残したまま、自らの意思で《淫獄》の外を旅している。'},
   {name:'ナーヴァ', reading:'NAVA', image:'20261117-personality/nava.webp', type:'summoned', badge:'UR', title:'戦場を焼き尽くした竜', description:'軍勢を焼き尽くせる古竜。規格外の力を持つが、現在は夜斗たちと同居し、狩猟の運用作りに参加している。'},
-  {name:'縁', reading:'ENISHI', type:'other', badge:'?', image:'20261117-enishi-rabbit2/enishi.webp', title:'正体不明の小型生物', description:'《淫獄》で保護され、共同生活へ馴染みつつある小さな生き物。誰の物にもならず、自分で安心できる距離を選ぶ。'}
+  {name:'縁', reading:'ENISHI', type:'other', badge:'?', image:'20261117-enishi-soft/enishi.webp', title:'正体不明の小型生物', description:'《淫獄》で保護され、共同生活へ馴染みつつある小さな生き物。誰の物にもならず、自分で安心できる距離を選ぶ。'}
 ];
 
 const glossary = [
