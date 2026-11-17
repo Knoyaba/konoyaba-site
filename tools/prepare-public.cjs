@@ -1,0 +1,29 @@
+// Creates an indexable delivery candidate locally. This script never deploys or pushes.
+const fs=require('fs'),path=require('path'),vm=require('vm'),crypto=require('crypto');
+const {buildMetadata,metadataKey,renderHead,renderBrowserMetadata}=require('./site-metadata.cjs');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'dist'),box={window:{}};
+vm.runInNewContext(fs.readFileSync(path.join(root,'bookshelf/data.js'),'utf8'),box);
+const metadata=buildMetadata(box.window.BOOKSHELF_DATA);
+fs.writeFileSync(path.join(root,'js/site-metadata.js'),renderBrowserMetadata(metadata));
+const htmlFiles=['index.html','konoyaba.html','characters/index.html','world/index.html','glossary/index.html','bookshelf/index.html','bookshelf/work.html','bookshelf/story.html','bookshelf/map.html'];
+const files=new Set([...htmlFiles,'author-home.css','bookshelf/bookshelf.css','bookshelf/bookshelf.js','bookshelf/data.js','js/site-metadata.js']);
+for(const folder of ['css','js','assets'])for(const entry of fs.readdirSync(path.join(root,folder),{withFileTypes:true}))if(entry.isFile()&&/\.(css|js|svg|png|webp|jpe?g)$/i.test(entry.name))files.add(folder+'/'+entry.name);
+function findAsset(ref,rel){if(/^(?:data:|#)/.test(ref))return;let candidates=[];if(/^https?:/.test(ref)){const u=new URL(ref);if(u.origin!==metadata.origin)return;candidates=[path.join(root,decodeURIComponent(u.pathname))];}else{const clean=ref.split(/[?#]/)[0];candidates=[path.resolve(path.dirname(path.join(root,rel)),clean),path.resolve(root,clean),path.resolve(root,'images/characters',clean)];}for(const f of candidates){if(!f.startsWith(root+path.sep)||!fs.existsSync(f)||!fs.statSync(f).isFile())continue;const asset=path.relative(root,f).replaceAll('\\','/');if(/(?:^|\/)(?:README|LOCAL-IMPLEMENTATION|preview\.html)|\.(?:cmd|txt|md)$/i.test(asset))continue;if(/\.(?:png|webp|jpe?g|svg|css|js|woff2?)$/i.test(asset)){files.add(asset);return;}}}
+for(const file of files){const ext=path.extname(file);if(!['.html','.js','.css'].includes(ext))continue;const t=fs.readFileSync(path.join(root,file),'utf8');for(const m of t.matchAll(/["']([^"'<>\s]+\.(?:png|webp|jpe?g|svg|css|js|woff2?)(?:\?[^"'<>\s]*)?)["']/gi))findAsset(m[1],file);for(const m of t.matchAll(/url\(["']?([^)'"\s]+)["']?\)/gi))findAsset(m[1],file);}
+fs.mkdirSync(out,{recursive:true});
+const expected=new Set([...files,'_worker.js','_routes.json','_headers','robots.txt','sitemap.xml','404.html']);
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.relative(out,path.join(dir,e.name)).replaceAll('\\','/')]);}
+for(const file of walk(out))if(!expected.has(file))throw Error('Unexpected file in generated output; review before replacing: '+file);
+for(const rel of files){let bytes=fs.readFileSync(path.join(root,rel));if(rel.endsWith('.html')){const key=metadataKey(new URL('/'+rel,metadata.origin));bytes=Buffer.from(renderHead(bytes.toString('utf8'),metadata.pages[key]));}const dest=path.join(out,rel);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,bytes);}
+const worker='const metadata='+JSON.stringify(metadata)+';\nconst metadataKey='+metadataKey.toString()+';\nconst escapeAttr='+function escapeAttr(v){return String(v).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');}.toString()+';\nconst renderHead='+renderHead.toString()+';\nexport default {async fetch(request,env){const response=await env.ASSETS.fetch(request);const url=new URL(request.url),key=metadataKey(url),meta=metadata.pages[key];if(!meta||!response.ok||!response.headers.get("content-type")?.includes("text/html"))return response;const html=request.method==="HEAD"?null:renderHead(await response.text(),meta),headers=new Headers(response.headers);headers.delete("content-length");headers.delete("etag");headers.set("X-Robots-Tag",meta.robots);headers.set("Cache-Control","no-store");return new Response(html,{status:response.status,headers});}};\n';
+fs.writeFileSync(path.join(out,'_worker.js'),worker);
+fs.writeFileSync(path.join(out,'_routes.json'),JSON.stringify({version:1,include:['/','/index.html','/konoyaba*','/characters*','/world*','/glossary*','/bookshelf/','/bookshelf/index*','/bookshelf/work*','/bookshelf/story*','/bookshelf/map*'],exclude:[]},null,2));
+fs.writeFileSync(path.join(out,'_headers'),'/*\n  X-Content-Type-Options: nosniff\n/404.html\n  X-Robots-Tag: noindex, nofollow\n');
+fs.writeFileSync(path.join(out,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+metadata.origin+'/sitemap.xml\n');
+const xmlEscape=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
+const sitemapPages=Object.values(metadata.pages).filter(p=>p.robots==='index,follow');
+fs.writeFileSync(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+sitemapPages.map(p=>'  <url><loc>'+xmlEscape(p.canonical)+'</loc></url>').join('\n')+'\n</urlset>\n');
+fs.writeFileSync(path.join(out,'404.html'),'<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>ページが見つかりません｜遊域工房</title><body><h1>ページが見つかりません</h1><p><a href="/">遊域工房のトップへ戻る</a></p><p>遊域工房 ／ 遊域かなと</p></body></html>');
+const manifest={createdAt:new Date().toISOString(),status:'公開直前候補・未公開・公開時の検索許可設定済み',origin:metadata.origin,files:walk(out).sort().map(file=>{const b=fs.readFileSync(path.join(out,file));return {file,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};})};
+fs.writeFileSync(path.join(root,'tools/public-manifest.json'),JSON.stringify(manifest,null,2));
+console.log(JSON.stringify({output:out,files:manifest.files.length,status:manifest.status,origin:metadata.origin}));
