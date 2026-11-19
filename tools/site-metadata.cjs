@@ -14,7 +14,7 @@ function buildMetadata(data){
  add('/bookshelf/map.html','このやばの関係マップ｜遊域かなと・遊域工房','本編・夜斗版、LIMIT BREAK版、9つの来歴譚、エルナの独立長編。人物画像から物語のつながりをたどれます。','bookshelf/'+data.portraits.yato,'本編・夜斗版の黒瀬夜斗');
  add('/bookshelf/work.html','作品紹介｜遊域かなと・遊域工房','遊域かなとの作品紹介。物語の楽しさを知り、確認済みの掲載先から小説を読めます。');
  add('/bookshelf/story.html','人物の物語｜遊域かなと・遊域工房','『このやば』の人物の来歴譚、独立長編、別版を紹介します。');
- for(const w of data.works)add('/bookshelf/work.html?id='+encodeURIComponent(w.id),w.title+'｜遊域かなと・遊域工房',w.desc+' 遊域かなとの作品。'+w.tags.split('／').join('、')+'の物語を紹介します。',w.id==='konoyaba'?'bookshelf/'+data.portraits.yato:w.id==='isekai-management'?'bookshelf/assets/management-cover.png':'',w.id==='isekai-management'?'異世界管理局の既存表紙':'黒瀬夜斗');
+ for(const w of data.works)add('/bookshelf/work.html?id='+encodeURIComponent(w.id),w.title+'｜遊域かなと・遊域工房',w.desc+' 遊域かなとの作品。'+w.tags.split('／').join('、')+'の物語を紹介します。',w.cover?'bookshelf/'+w.cover:w.id==='konoyaba'?'bookshelf/'+data.portraits.yato:w.id==='isekai-management'?'bookshelf/assets/management-cover.png':'',w.cover?w.title+'の正式表紙':w.id==='isekai-management'?'異世界管理局の既存表紙':'黒瀬夜斗');
  for(const s of data.stories)add('/bookshelf/story.html?id='+encodeURIComponent(s.id),(s.id==='asato'?'このやば・LIMIT BREAK版':s.name+'の物語')+'｜遊域かなと・遊域工房',s.desc+' '+s.relation,'bookshelf/'+data.portraits[s.id],s.name);
  for(const [key,meta] of Object.entries(pages)){if(key==='/')meta.image=ORIGIN+'/sns/site-share.png';if(['/konoyaba.html','/bookshelf/work.html?id=konoyaba','/bookshelf/map.html'].includes(key))meta.image=ORIGIN+'/sns/konoyaba-share.png';if(meta.image.includes('/sns/')){meta.imageWidth=1200;meta.imageHeight=630;meta.imageAlt=key==='/'?'遊域工房・遊域かなとの作品集。代表作の黒瀬夜斗と物語の案内':'このスキル、やばスギル。黒瀬夜斗と異世界ガチャ・共同生活・拠点づくりの物語';}}
  return {origin:ORIGIN,author:AUTHOR,brand:BRAND,pages};
