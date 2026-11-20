@@ -1,0 +1,1 @@
+window.GALLERY_ARTWORKS=[{"id":"band","workId":"musician-isekai","work":"歌で仲間を、国を支える物語","title":"三人の音が、重なるステージ。","caption":"歌うヒビキ、低音を支えるメルル、リズムを刻むラグナ。完成形バンドの演奏イメージ。","type":"演奏イラスト","status":"正式採用済み","note":"完成形バンドの将来構想画です。現在の本文の特定話を描いた挿絵ではありません。","asset":"band-performance.png"}];
