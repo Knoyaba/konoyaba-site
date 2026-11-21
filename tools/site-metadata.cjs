@@ -5,7 +5,7 @@ function buildMetadata(data){
  const add=(key,title,description,image,alt)=>{pages[key]={title,description,canonical:ORIGIN+key,author:AUTHOR,siteName:BRAND,type:'website',image:image?new URL(image,ORIGIN+'/').href:'',imageAlt:alt||title,robots:['/bookshelf/work.html','/bookshelf/story.html'].includes(key)?'noindex,follow':'index,follow'};};
  add('/','遊域工房｜遊域かなとの作品案内','遊域かなとの創作活動「遊域工房」。代表作『このスキル、やばスギル。』をはじめ、仲間との暮らし、家族、戦い、冒険の物語を紹介します。','bookshelf/'+data.portraits.yato,'代表作『このやば』の黒瀬夜斗');
  add('/konoyaba.html','このスキル、やばスギル。｜遊域かなと・遊域工房','選べない召喚から始まる、異世界ガチャと共同生活の物語。黒瀬夜斗と仲間たち、世界観、小説の掲載先を紹介します。','bookshelf/'+data.portraits.yato,'黒瀬夜斗');
- add('/gallery/','挿絵ギャラリー｜遊域かなと・遊域工房','作品ごとの挿絵・一枚絵を楽しむ遊域工房のギャラリー。仲間たちの演奏イラストを大きく鑑賞し、気になる作品の紹介へ進めます。','gallery/art/band-performance.png','歌で仲間を、国を支える物語の演奏イラスト');
+ add('/gallery/','挿絵ギャラリー｜遊域かなと・遊域工房','作品ごとの挿絵・一枚絵を楽しむ遊域工房のギャラリー。夜斗が菓子を分ける場面と三人のバンド演奏を墨絵で鑑賞し、気になる作品の紹介へ進めます。','gallery/art/band-rhythm-oriha-br.png','歌で仲間を、国を支える物語の演奏イラスト');
  add('/characters/','このやばの人物紹介｜遊域かなと・遊域工房','夜斗版の登場人物を紹介。人物の姿と性格、出会いをたどり、朝斗版との違いも確認できます。','bookshelf/'+data.portraits.yato,'黒瀬夜斗');
  add('/characters/?route=asato','このやば・LIMIT BREAK版の人物紹介｜遊域かなと・遊域工房','白瀬朝斗を主人公にしたLIMIT BREAK版の登場人物を紹介。夜斗版とは異なる出会いと関係を案内します。','bookshelf/'+data.portraits.asato,'白瀬朝斗');
  add('/world/','このやばの世界観｜遊域かなと・遊域工房','異世界、ダンジョン、独立した王領域《淫獄》。『このやば』の物語を支える世界と暮らしの仕組みを紹介します。');
@@ -17,7 +17,7 @@ function buildMetadata(data){
  for(const w of data.works)add('/bookshelf/work.html?id='+encodeURIComponent(w.id),w.title+'｜遊域かなと・遊域工房',w.desc+' 遊域かなとの作品。'+w.tags.split('／').join('、')+'の物語を紹介します。',w.cover?'bookshelf/'+w.cover:w.id==='konoyaba'?'bookshelf/'+data.portraits.yato:w.id==='isekai-management'?'bookshelf/assets/management-cover.png':'',w.cover?w.title+'の正式表紙':w.id==='isekai-management'?'異世界管理局の既存表紙':'黒瀬夜斗');
  for(const s of data.stories)add('/bookshelf/story.html?id='+encodeURIComponent(s.id),(s.id==='asato'?'このやば・LIMIT BREAK版':s.name+'の物語')+'｜遊域かなと・遊域工房',s.desc+' '+s.relation,'bookshelf/'+data.portraits[s.id],s.name);
  for(const [key,meta] of Object.entries(pages)){if(key==='/')meta.image=ORIGIN+'/sns/site-share.png';if(['/konoyaba.html','/bookshelf/work.html?id=konoyaba','/bookshelf/map.html'].includes(key))meta.image=ORIGIN+'/sns/konoyaba-share.png';if(meta.image.includes('/sns/')){meta.imageWidth=1200;meta.imageHeight=630;meta.imageAlt=key==='/'?'遊域工房・遊域かなとの作品集。代表作の黒瀬夜斗と物語の案内':'このスキル、やばスギル。黒瀬夜斗と異世界ガチャ・共同生活・拠点づくりの物語';}}
- pages['/gallery/'].imageWidth=1536;pages['/gallery/'].imageHeight=1024;
+ pages['/gallery/'].imageWidth=1728;pages['/gallery/'].imageHeight=1176;
  return {origin:ORIGIN,author:AUTHOR,brand:BRAND,pages};
 }
 function metadataKey(url){let p=url.pathname;if(p==='/index.html')p='/';if(['/gallery','/gallery/index.html'].includes(p))p='/gallery/';if(p==='/konoyaba')p='/konoyaba.html';p=p.replace(/\/(characters|world|glossary)\/index\.html$/,'/$1/');if(['/characters','/world','/glossary'].includes(p))p+='/';if(p==='/bookshelf/')p='/bookshelf/index.html';if(['/bookshelf/work','/bookshelf/story','/bookshelf/map','/bookshelf/index'].includes(p))p+='.html';if(p==='/bookshelf/work.html'||p==='/bookshelf/story.html'){const id=url.searchParams.get('id');return id?p+'?id='+encodeURIComponent(id):p;}return p==='/characters/'&&url.searchParams.get('route')==='asato'?p+'?route=asato':p;}
