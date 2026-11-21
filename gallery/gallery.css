@@ -6,3 +6,16 @@
 body.modal-open{overflow:hidden}
 
 .opening{padding-top:30px;padding-bottom:28px}h1{font-size:44px;line-height:1.45}@media(max-width:600px){.opening{padding:25px 0 20px}h1{font-size:30px;line-height:1.6}h1 br{display:none}.intro{margin-top:13px}.intro p{margin:0}.work-mark,.work-head>div>p{display:none}.work-head h2{font-size:22px;margin-bottom:0}.work-head a{margin-top:6px}.work-head{margin-bottom:16px}}
+
+.art-source { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: .25rem .9rem; margin: 0; line-height: 1.6; text-align: left; }
+.art-source dt { font-size: .8125rem; color: #67536c; }
+.art-source dd { margin: 0; color: var(--ink); font-size: 1rem; overflow-wrap: anywhere; }
+.art-card > .art-source { margin-bottom: .75rem; border-left: 3px solid #b6a1bf; padding: .25rem .85rem; }
+#art-source { min-width: 0; }
+@media(max-width:600px) { .dialog-head { align-items: flex-start; } .dialog-head .art-source { column-gap: .55rem; } .dialog-head .art-source dd { font-size: .9375rem; } }
+
+.art-source h2 { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.55rem); line-height: 1.55; }
+.art-info > a { display: inline-flex; align-items: center; min-height: 44px; }
+#art-dialog[open] { display: flex; flex-direction: column; }
+#art-dialog .dialog-head, #art-dialog .dialog-foot { flex: none; }
+#art-dialog .dialog-content { min-height: 0; max-height: none; overflow-y: auto; }
