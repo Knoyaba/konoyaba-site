@@ -4,3 +4,28 @@ html{scroll-padding-top:20px}.author-home .site-header{max-width:1280px;margin:a
 @media(max-width:600px){.author-home .site-header{padding:17px 20px}.author-home .brand{font-size:23px}.author-home .site-header nav{gap:8px 16px;font-size:12px}.author-opening{display:block;padding:27px 20px 24px}.author-opening h1{font-size:29px}.opening-copy{font-size:14px;margin-top:17px;line-height:2}.signature{display:block;margin:0 20px 34px;padding:25px 20px}.signature-cover{width:144px;margin:0 auto 25px}.signature-book{padding:14px}.signature-book>strong{font-size:21px}.signature-book>span,.signature-book>small{font-size:8px}.signature-label{margin-bottom:13px}.signature h2{font-size:25px;line-height:1.7}.signature h2 span{font-size:16px}.signature-catch{font-size:21px}.signature-description{font-size:14px;line-height:2}.signature-actions a{font-size:15px;min-height:50px;width:100%;padding:11px 12px}.signature-map{font-size:12px;line-height:2;margin-top:16px}.shelf-intro{padding:0 20px 23px}.shelf-intro h2{font-size:25px}.author-note{margin:0 20px 34px;padding-top:24px}.author-note h2{font-size:25px}}
 @media(max-width:350px){.signature{margin-left:15px;margin-right:15px;padding:22px 17px}.signature h2{font-size:22px}.signature-catch{font-size:19px}.signature h2 span{font-size:15px}.author-home .brand{font-size:21px}.author-home .site-header nav{gap:8px 12px}.author-opening,.shelf-intro{padding-left:15px;padding-right:15px}.author-opening h1{font-size:27px}.author-note{margin-left:15px;margin-right:15px}}
 @media(max-width:600px){.signature-book{padding:12px}.signature-book>strong{font-size:16px;line-height:1.8}}
+
+/* The home sections share a single gutter, including the gallery entrance. */
+.author-home #main {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 32px);
+}
+.author-home #main > section {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+.author-home #main > :is(.author-opening, .shelf-intro, .filter-section, .shelf-section, .author-note) {
+  padding-inline: 0;
+}
+
+@media (max-width: 600px) {
+  .author-home #main .author-opening h1 {
+    font-size: clamp(23px, 7vw, 28px);
+  }
+  .author-home .author-opening h1 br {
+    display: initial;
+  }
+}

@@ -6,3 +6,16 @@
 @media(prefers-reduced-motion:reduce){.yk-site *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
 #books[data-count="2"]{max-width:760px;margin-inline:auto}@media(max-width:600px){#books[data-count="2"]{max-width:none}}
+
+/* Keep adjacent work cards' reading links on a common baseline. */
+.yk-site .book-card {
+  display: flex;
+  flex-direction: column;
+}
+.yk-site .book-card > .text-link {
+  margin-top: auto;
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
