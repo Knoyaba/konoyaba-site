@@ -46,5 +46,21 @@ window.GALLERY_ARTWORKS=[
     "asset": "al-ep03-asaba-oriha.png",
     "width": 1152,
     "height": 1408
+  },
+  {
+    "id": "rumandia-ep09-flowering-twig",
+    "workId": "maou-kunizukuri",
+    "work": "病院で孤独な生涯を送った僕は、今度こそ仲間と暮らしたいです ～僕の理想国家が危険視されている件～",
+    "part": "本編 第9話「花と器と、二人の時間」",
+    "scene": "中庭でルマンディアが二つの蕾の下を指先で支え、アルに花の楽しみ方を話す",
+    "title": "明日が気になる枝",
+    "caption": "「こちらもきれいですね。でも、蕾があると、明日はどうなっているか気になるんです」",
+    "note": "咲いた花と、これから開く蕾。アルの目線から、ルマンディアが明日の楽しみを語る表情を描いた。",
+    "type": "本編挿絵・遊域工房式墨絵",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "rumandia-ep09-flowering-twig.png",
+    "width": 1344,
+    "height": 1024
   }
 ];
