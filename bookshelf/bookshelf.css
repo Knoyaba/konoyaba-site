@@ -16,3 +16,28 @@
 
 /* Confirmed reading destinations; existing covers and typography are retained. */
 .reading-links{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 24px}.reading-links .read-button{margin:0}@media(max-width:600px){.reading-links{display:grid;grid-template-columns:minmax(0,1fr)}}
+
+.long-work-title .title-main,
+.long-work-title .title-sub {
+  display: block;
+  line-break: strict;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.long-work-title .title-sub {
+  margin-top: .5em;
+  color: #53483f;
+  font-size: max(.75em, 14px);
+  line-height: 1.65;
+}
+@media (max-width: 650px) {
+  .yk-site .work-hero:has(h1.long-work-title) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .yk-site .work-hero:has(h1.long-work-title) > .image-cover {
+    width: min(46vw, 180px);
+    margin-inline: auto;
+  }
+}
