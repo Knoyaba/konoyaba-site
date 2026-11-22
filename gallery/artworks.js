@@ -30,5 +30,21 @@ window.GALLERY_ARTWORKS=[
     "asset": "band-rhythm-oriha-br.png",
     "width": 1728,
     "height": 1176
+  },
+  {
+    "id": "al-ep03-morning-window",
+    "workId": "maou-kunizukuri",
+    "work": "病院で孤独な生涯を送った僕は、今度こそ仲間と暮らしたいです ～僕の理想国家が危険視されている件～",
+    "part": "本編 第3話「僕の足で迎える朝」",
+    "scene": "自分の足で窓辺まで歩いたアルが、カーテンをよけて庭を眺める",
+    "title": "窓まで、僕の足で",
+    "caption": "「窓辺まで来て、揺れるカーテンを片手でよけた。」",
+    "note": "ルマンディアが扉を叩く少し前。開けた窓から、朝の風がアルの頬に触れる。",
+    "type": "本編挿絵・遊域工房式墨絵",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "al-ep03-asaba-oriha.png",
+    "width": 1152,
+    "height": 1408
   }
 ];

@@ -21,12 +21,11 @@ body.modal-open{overflow:hidden}
 #art-dialog .dialog-content { min-height: 0; max-height: none; overflow-y: auto; }
 
 @media (min-width: 760px) {
-  .art-card:has(.art-frame[data-art="konoyaba-ep02-share"]) {
+  .art-card:has(.art-frame[data-art="konoyaba-ep02-share"]), .art-card:has(.art-frame[data-art="al-ep03-morning-window"]) {
     width: min(100%, 62vh, 42rem);
     margin-inline: auto;
   }
 }
 
 
-.art-frame[data-art="trio-live-sumi"] .enlarge,
-.art-frame[data-art="konoyaba-ep02-share"] .enlarge { left: 10px; right: auto; }
+.art-frame .enlarge { position: static; display: block; width: fit-content; margin: 6px 0 6px 10px; }
