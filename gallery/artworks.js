@@ -78,5 +78,21 @@ window.GALLERY_ARTWORKS=[
     "asset": "rumandia-ep09-flowering-twig.png",
     "width": 1344,
     "height": 1024
+  },
+  {
+    "id": "chiyo-ep04-same-bowl",
+    "workId": "konoyaba",
+    "work": "このスキル、やばスギル。 ～ガチャ沼に堕ちたら俺の負け～",
+    "part": "冬月千代来歴譚 第4話「同じ椀」",
+    "title": "食べぬのですか",
+    "scene": "薄い粥の椀を前に、千代が脇の帳面へ手を伸ばす。隣の幼子が匙を止めて尋ねると、千代の手も止まる。",
+    "caption": "「食べぬのですか」",
+    "note": "城主の取り分を戻させた千代も、皆と同じ薄い粥を受け取った。幼子は千代が食べ始めるのを待っている。",
+    "type": "来歴譚挿絵・遊域工房式墨絵",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "chiyo-same-bowl-hand-v2.png",
+    "width": 1344,
+    "height": 1024
   }
 ];
