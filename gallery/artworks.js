@@ -16,6 +16,22 @@ window.GALLERY_ARTWORKS=[
     "height": 1600
   },
   {
+    "id": "serina-ep01-inn-compass",
+    "workId": "konoyaba",
+    "work": "このスキル、やばスギル。 ～ガチャ沼に堕ちたら俺の負け～",
+    "part": "セリナ・ウェルズ来歴譚 第1話「あの向こうを見たい」",
+    "title": "今日は、もう歩かないわよ",
+    "scene": "宿の寝台で、セリナが首から外した小さな方位磁針に声をかける",
+    "caption": "「今日は、もう歩かないわよ」",
+    "note": "古い方位磁針の縁には傷があり、少し歪んでいる。掌を傾けても、針は一つの方角へ落ち着かない。",
+    "type": "来歴譚挿絵・遊域工房式墨絵",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "serina-inn-compass-pendant.png",
+    "width": 1152,
+    "height": 1408
+  },
+  {
     "id": "trio-live-sumi",
     "workId": "musician-isekai",
     "work": "歌で仲間を、国を支える物語",

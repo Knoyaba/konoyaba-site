@@ -36,3 +36,22 @@ body.modal-open{overflow:hidden}
     margin-inline: auto;
   }
 }
+/* Keep the entire portrait visible while giving its compass and seal more space. */
+#art-dialog:has(#art-image[src$="/serina-inn-compass-pendant.png"]) #art-image {
+  max-height: 75dvh;
+}
+@media (min-width: 900px) {
+  #art-dialog:has(#art-image[src$="/serina-inn-compass-pendant.png"]) .dialog-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  #art-dialog:has(#art-image[src$="/serina-inn-compass-pendant.png"]) {
+    width: 100%; max-width: 100%; max-height: 98dvh;
+  }
+  #art-dialog:has(#art-image[src$="/serina-inn-compass-pendant.png"]) #art-image {
+    width: calc(100% - 24px); margin-inline: auto; max-height: 62dvh;
+  }
+}
