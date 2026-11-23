@@ -94,5 +94,21 @@ window.GALLERY_ARTWORKS=[
     "asset": "chiyo-same-bowl-hand-v2.png",
     "width": 1344,
     "height": 1024
+  },
+  {
+    "id": "familiar-ep01-lap",
+    "workId": "familiar-armor",
+    "work": "わたしの鎧は、甘えん坊の小狐です",
+    "part": "96話拡張版 第1話「小さな家族が来た日」",
+    "title": "……ここが、よかったの？",
+    "scene": "青い布を敷いた籠のそばで、小狐が自分からリリアの膝に乗り、服に鼻先をうずめる。",
+    "caption": "「……ここが、よかったの？」",
+    "note": "七歳のリリアが、小狐にルカと名づける少し前。長い尾がリリアの腕を越え、毛先が手の甲をくすぐる。",
+    "type": "本編挿絵・遊域工房式墨絵",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "lilia-luka-lap-v2.png",
+    "width": 1344,
+    "height": 1024
   }
 ];

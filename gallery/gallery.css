@@ -55,3 +55,15 @@ body.modal-open{overflow:hidden}
     width: calc(100% - 24px); margin-inline: auto; max-height: 62dvh;
   }
 }
+
+@media (min-width: 760px) {
+  .art-card:has([data-art="familiar-ep01-lap"]) {
+    width: min(100%, 66vh, 40rem);
+    margin-inline: auto;
+  }
+}
+@media (max-width: 600px) {
+  #art-dialog:has(#art-image[src$="/lilia-luka-lap-v2.png"]) {
+    width: 100%; max-width: 100%; max-height: 98dvh;
+  }
+}
