@@ -99,7 +99,7 @@ window.GALLERY_ARTWORKS=[
     "id": "familiar-ep01-lap",
     "workId": "familiar-armor",
     "work": "わたしの鎧は、甘えん坊の小狐です",
-    "part": "96話拡張版 第1話「小さな家族が来た日」",
+    "part": "第1話「小さな家族が来た日」",
     "title": "……ここが、よかったの？",
     "scene": "青い布を敷いた籠のそばで、小狐が自分からリリアの膝に乗り、服に鼻先をうずめる。",
     "caption": "「……ここが、よかったの？」",
