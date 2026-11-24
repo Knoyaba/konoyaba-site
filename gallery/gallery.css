@@ -57,13 +57,15 @@ body.modal-open{overflow:hidden}
 }
 
 @media (min-width: 760px) {
-  .art-card:has([data-art="familiar-ep01-lap"]) {
+  .art-card:has([data-art="familiar-ep01-lap"]),
+  .art-card:has([data-art="bureau-ep02-hold"]) {
     width: min(100%, 66vh, 40rem);
     margin-inline: auto;
   }
 }
 @media (max-width: 600px) {
-  #art-dialog:has(#art-image[src$="/lilia-luka-lap-v2.png"]) {
+  #art-dialog:has(#art-image[src$="/lilia-luka-lap-v2.png"]),
+  #art-dialog:has(#art-image[src$="/bureau-ep02-hold-mid-ink.png"]) {
     width: 100%; max-width: 100%; max-height: 98dvh;
   }
 }

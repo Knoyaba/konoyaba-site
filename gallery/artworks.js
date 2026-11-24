@@ -110,5 +110,21 @@ window.GALLERY_ARTWORKS=[
     "asset": "lilia-luka-lap-v2.png",
     "width": 1344,
     "height": 1024
+  },
+  {
+    "workId": "isekai-management",
+    "part": "本編 第2話「風呂場にスライムがいるんですが」",
+    "title": "ご家庭にもご都合がありますから",
+    "scene": "風呂場のスライムについての電話を保留にした夏希がしのぶにぼやき、しのぶが穏やかに返す。",
+    "caption": "「ええ。ご家庭にもご都合がありますから」",
+    "style": "遊域工房式墨絵",
+    "status": "正式採用済み",
+    "asset": "bureau-ep02-hold-mid-ink.png",
+    "width": 1344,
+    "height": 1024,
+    "id": "bureau-ep02-hold",
+    "work": "お電話ありがとうございます。こちらは異世界管理局です。",
+    "type": "本編挿絵・遊域工房式墨絵",
+    "note": "赤い保留ランプが灯る間に交わされた、夏希としのぶの短いやりとり。"
   }
 ];
