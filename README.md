@@ -39,6 +39,12 @@ konoyaba-site/
 └─ README.md
 ```
 
+## 本棚と作品紹介の表紙
+
+掲載用の表紙は横500×縦711px。高解像度の原画を保管し、縦横比を保って全体を収め、寸法の差は余白で調整します。掲載画像を `bookshelf/data.js` の該当作品の `cover` に登録すると、トップの本棚・作品一覧・作品紹介で共有されます。文字で組む表紙も同じ表示比率です。
+
+公開用の生成（`node tools/prepare-public.cjs`）は全作品の画像ファイルを開いて実寸を検査します。公開後はPlaywrightとEdgeを利用できる環境で `node tools/check-cover-layout.cjs https://yukikobo.pages.dev/` を実行します。トップと本棚の折りたたみを開き、全作品の実寸、文字表紙の上下端、一覧間・作品紹介間の表示幅を340・390・768・1440px幅で検査します。
+
 ## ローカルで確認する
 
 `index.html`をブラウザーで開けます。人物紹介は`characters/index.html`です。

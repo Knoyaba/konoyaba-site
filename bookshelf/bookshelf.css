@@ -58,3 +58,37 @@
 .scene-preview-label > span { font-size: 14px; color: var(--soft); }
 .scene-preview-action { white-space: nowrap; color: var(--warm); text-decoration: underline; text-underline-offset: .25em; font-size: 14px; }
 .scene-preview-link:hover .scene-preview-action { text-decoration-thickness: 2px; }
+
+/* All work covers use the publication canvas, including typeset covers. */
+.yk-site .cover-shelf > :is(.book-cover,.image-cover),
+.yk-site .work-hero > :is(.book-cover,.image-cover) {
+  aspect-ratio: 500 / 711;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+}
+@media (max-width: 650px) {
+  .yk-site #work-detail .work-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .yk-site #work-detail .work-hero > :is(.book-cover,.image-cover) {
+    width: min(46vw, 180px);
+    margin-inline: auto;
+  }
+}
+
+/* Use the same book width in both shelf layouts, including filtered results. */
+.yk-site .books .cover-shelf {
+  width: min(100%, calc(25vw - 48px), 248px);
+  margin-inline: auto;
+}
+@media (max-width: 900px) {
+  .yk-site .books .cover-shelf { width: min(100%, calc(33.333vw - 40px), 248px); }
+}
+@media (max-width: 600px) {
+  .yk-site .books .cover-shelf { width: min(100%, calc(50vw - 28px), 248px); }
+}
+@media (max-width: 350px) {
+  .yk-site .books .cover-shelf { width: min(100%, 208px); }
+}
