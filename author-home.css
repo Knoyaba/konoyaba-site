@@ -52,3 +52,40 @@ html{scroll-padding-top:20px}.author-home .site-header{max-width:1280px;margin:a
   .signature-scene { margin:0 auto 24px; }
   .signature-scene img { max-height:254px; }
 }
+
+.studio-platforms {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  padding: clamp(18px, 3vw, 32px) 0;
+  border-block: 1px solid var(--line);
+}
+.studio-platforms > div + div {
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: clamp(24px, 4vw, 56px);
+}
+.studio-platforms h3 {
+  margin: 0 0 10px;
+  color: #635768;
+  font: 600 .875rem/1.6 "Yu Gothic", Meiryo, sans-serif;
+  letter-spacing: .06em;
+}
+.studio-platforms ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px clamp(16px, 2.5vw, 36px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.studio-platforms li {
+  color: #352d37;
+  font: 600 clamp(1.05rem, 1.6vw, 1.4rem)/1.6 "Yu Mincho", "Hiragino Mincho ProN", serif;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .studio-platforms { grid-template-columns: 1fr; gap: 18px; }
+  .studio-platforms > div + div { border: 0; padding: 0; }
+  .studio-platforms h3 { margin-bottom: 4px; }
+}
