@@ -41,3 +41,10 @@
     margin-inline: auto;
   }
 }
+
+.book-cover strong.long-work-title .title-sub {
+  margin-top: .45em;
+  color: inherit;
+  font-size: max(.62em, 12px);
+  line-height: 1.45;
+}

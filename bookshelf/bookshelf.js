@@ -4,7 +4,9 @@ function displayTitle(node,work){
   const split=work.title.search(/[ 　]～/u);
   if(split<0)return node;
   node.classList.add('long-work-title');
-  node.replaceChildren(e('span','title-main',work.title.slice(0,split)),document.createTextNode(work.title[split]),e('span','title-sub',work.title.slice(split+1)));
+  const separator=e('span','',work.title[split]);
+  separator.hidden=true;
+  node.replaceChildren(e('span','title-main',work.title.slice(0,split)),separator,e('span','title-sub',work.title.slice(split+1)));
   return node;
 }
 function card(w){const a=e('article','book-card');const shelf=link('',`work.html?id=${encodeURIComponent(w.id)}`,'cover-link cover-shelf');shelf.setAttribute('aria-label',w.title+'の紹介を見る');shelf.append(cover(w));const h=e('h3');h.append(displayTitle(link(w.title,`work.html?id=${encodeURIComponent(w.id)}`),w));a.append(shelf,e('p','availability',w.availability),h,e('p','blurb',w.desc),e('p','tags',w.tags),link('作品紹介 →',`work.html?id=${encodeURIComponent(w.id)}`,'text-link'));return a;}
