@@ -92,3 +92,5 @@
 @media (max-width: 350px) {
   .yk-site .books .cover-shelf { width: min(100%, 208px); }
 }
+
+.title-phrase{display:inline-block;max-width:100%;}
