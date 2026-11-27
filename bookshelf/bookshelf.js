@@ -8,6 +8,13 @@ function displayTitle(node,work){
   const separator=e('span','',work.title[split]);
   separator.hidden=true;
   node.replaceChildren(e('span','title-main',work.title.slice(0,split)),separator,e('span','title-sub',work.title.slice(split+1)));
+  if(work.id==='rwf'){
+    const segments=[['.title-main',['復帰した','元世界王者は','新しい楽しみ方を知る']],['.title-sub',['～リアルワールド','ファンタジア～']]];
+    for(const [selector,parts] of segments){
+      const line=node.querySelector(selector);
+      if(line.textContent===parts.join(''))line.replaceChildren(...parts.map(part=>e('span','title-phrase',part)));
+    }
+  }
   return node;
 }
 function card(w){const a=e('article','book-card');const shelf=link('',`work.html?id=${encodeURIComponent(w.id)}`,'cover-link cover-shelf');shelf.setAttribute('aria-label',w.title+'の紹介を見る');shelf.append(cover(w));const h=e('h3');h.append(displayTitle(link(w.title,`work.html?id=${encodeURIComponent(w.id)}`),w));a.append(shelf,e('p','availability',w.availability),h,e('p','blurb',w.desc),e('p','tags',w.tags),link('作品紹介 →',`work.html?id=${encodeURIComponent(w.id)}`,'text-link'));return a;}
