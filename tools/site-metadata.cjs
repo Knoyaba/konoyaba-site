@@ -1,8 +1,8 @@
-const ORIGIN='https://konoyaba-site.pages.dev';
+const ORIGIN='https://yukikobo.pages.dev';
 const AUTHOR='遊域かなと',BRAND='遊域工房';
 function buildMetadata(data){
  const pages={};
- const add=(key,title,description,image,alt)=>{pages[key]={title,description,canonical:ORIGIN+key,author:AUTHOR,siteName:BRAND,type:'website',image:image?new URL(image,ORIGIN+'/').href:'',imageAlt:alt||title,robots:['/bookshelf/work.html','/bookshelf/story.html'].includes(key)?'noindex,follow':'index,follow'};};
+ const add=(key,title,description,image,alt)=>{pages[key]={title,description,canonical:ORIGIN+key.replace('/bookshelf/index.html','/bookshelf/').replace(/^([/](?:bookshelf[/](?:work|story|map)|konoyaba))[.]html(?=[?]|$)/,'$1'),author:AUTHOR,siteName:BRAND,type:'website',image:image?new URL(image,ORIGIN+'/').href:'',imageAlt:alt||title,robots:['/bookshelf/work.html','/bookshelf/story.html'].includes(key)?'noindex,follow':'index,follow'};};
  add('/','遊域工房｜遊域かなとの作品案内','遊域かなとの創作活動「遊域工房」。代表作『このスキル、やばスギル。』をはじめ、仲間との暮らし、家族、戦い、冒険の物語を紹介します。','bookshelf/'+data.portraits.yato,'代表作『このやば』の黒瀬夜斗');
  add('/konoyaba.html','このスキル、やばスギル。｜遊域かなと・遊域工房','選べない召喚から始まる、異世界ガチャと共同生活の物語。黒瀬夜斗と仲間たち、世界観、小説の掲載先を紹介します。','bookshelf/'+data.portraits.yato,'黒瀬夜斗');
  add('/gallery/','挿絵ギャラリー｜遊域かなと・遊域工房','作品ごとの挿絵・一枚絵を楽しむ遊域工房のギャラリー。夜斗が菓子を分ける場面と三人のバンド演奏を墨絵で鑑賞し、気になる作品の紹介へ進めます。','gallery/art/band-rhythm-oriha-br.png','歌で仲間を、国を支える物語の演奏イラスト');

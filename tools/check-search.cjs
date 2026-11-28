@@ -6,7 +6,7 @@ async function main(){
  const xml=fs.readFileSync(path.join(out,'sitemap.xml'),'utf8');
  assert(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));assert(xml.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'));
  const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1].replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&apos;',"'"));
- for(const work of box.window.BOOKSHELF_DATA.works)assert(urls.includes(metadata.origin+'/bookshelf/work.html?id='+encodeURIComponent(work.id)),work.id+' sitemap');assert(urls.includes(metadata.origin+'/gallery/'));assert.equal(new Set(urls).size,urls.length);assert.deepEqual(urls,pages.map(([,m])=>m.canonical));
+ for(const work of box.window.BOOKSHELF_DATA.works)assert(urls.includes(metadata.origin+'/bookshelf/work?id='+encodeURIComponent(work.id)),work.id+' sitemap');assert(urls.includes(metadata.origin+'/gallery/'));assert.equal(new Set(urls).size,urls.length);assert.deepEqual(urls,pages.map(([,m])=>m.canonical));
  const results=[];
  for(const [key,m]of pages){
   assert(m.canonical.startsWith(metadata.origin+'/'));assert(!/preview|404|README|\/tools\//.test(m.canonical));

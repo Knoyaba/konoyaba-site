@@ -29,5 +29,13 @@
     figure.dataset.art = art.id;
     try { localStorage.setItem(key, JSON.stringify({last: art.id, seen: [...(startCycle ? [] : seen), art.id]})); } catch {}
   };
-  img.src = 'gallery/art/' + encodeURIComponent(art.asset);
+  const thumb = 'gallery/thumbs/' + encodeURIComponent(art.asset.replace(/\.[^.]+$/, ''));
+  img.onerror = () => {
+    img.onerror = null;
+    img.removeAttribute('srcset');
+    img.src = 'gallery/art/' + encodeURIComponent(art.asset);
+  };
+  img.sizes = '(max-width: 650px) 92vw, 520px';
+  img.srcset = thumb + '-480.webp 480w, ' + thumb + '-960.webp 960w';
+  img.src = thumb + '-480.webp';
 })();
